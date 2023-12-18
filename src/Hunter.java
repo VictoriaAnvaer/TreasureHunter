@@ -9,6 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
+    private boolean gameOver;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -20,6 +21,7 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[5]; // only 5 possible items can be stored in kit
         gold = startingGold;
+        gameOver = false;
     }
 
     //Accessors
@@ -35,7 +37,6 @@ public class Hunter {
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {
-            gold = 0;
         }
     }
 
@@ -147,7 +148,7 @@ public class Hunter {
     public String toString() {
         String str = hunterName + " has " + Colors.YELLOW + gold + Colors.RESET + " gold";
         if (!kitIsEmpty()) {
-            str += " and " + getInventory();
+            str += " and " + Colors.PURPLE + getInventory() + Colors.RESET;
         }
         return str;
     }

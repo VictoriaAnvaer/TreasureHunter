@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private static boolean gameOver;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -25,6 +26,7 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+        gameOver = false;
     }
 
     /**
@@ -102,7 +104,7 @@ public class TreasureHunter {
     private void showMenu() {
         String choice = "";
 
-        while (!choice.equals("x")) {
+        while (!choice.equals("x") && gameOver == false) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -140,5 +142,11 @@ public class TreasureHunter {
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
+    }
+
+    public static void gameOVER() {
+        System.out.println();
+        System.out.println("game over! You lost all your gold");
+        gameOver = true;
     }
 }
