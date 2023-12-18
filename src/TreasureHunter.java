@@ -145,8 +145,8 @@ public class TreasureHunter {
         }
     }
 
-    public static void gameOVER() {
-        System.out.println();
+    public static void gameOVER(String message) {
+        System.out.println(message);
         System.out.println("game over! You lost all your gold");
         gameOver = true;
     }
