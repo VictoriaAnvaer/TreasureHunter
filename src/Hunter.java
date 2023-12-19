@@ -9,6 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private String[] treasure;
+    private String mode;
     private int gold;
     private boolean gameOver;
 
@@ -22,14 +23,21 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[7]; // only 7 possible items can be stored in kit
         treasure = new String[3];
-        treasure = new String[3];
         gold = startingGold;
         gameOver = false;
+        mode = "";
     }
 
     //Accessors
     public String getHunterName() {
         return hunterName;
+    }
+    public void setMode(String newMode) {
+        newMode = mode;
+    }
+
+    public String getMode() {
+        return mode;
     }
 
     /**
