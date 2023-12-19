@@ -155,6 +155,9 @@ public class Town {
             System.out.println("you found dust!");
         }
         hunt = true;
+        if (gem == true && crown == true && trophy == true ) {
+            TreasureHunter.win();
+        }
     }
 
     public boolean hunted() {

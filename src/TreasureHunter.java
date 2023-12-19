@@ -122,7 +122,7 @@ public class TreasureHunter {
     private void showMenu() {
         String choice = "";
 
-        while (!choice.equals("x") && gameOver == false) {
+        while (!choice.equals("x") && gameOver == false ) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -177,4 +177,11 @@ public class TreasureHunter {
         System.out.println("game over! You lost all your gold");
         gameOver = true;
     }
+
+
+    public static void win() {
+        System.out.println("Congrats! You have found the last of the three treasures, you win!");
+        gameOver = true;
+    }
 }
+

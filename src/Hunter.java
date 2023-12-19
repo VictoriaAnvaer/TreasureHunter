@@ -8,7 +8,7 @@ public class Hunter {
     //instance variables
     private String hunterName;
     private String[] kit;
-    private String[] treasure;
+    private static String[] treasure;
     private String mode;
     private int gold;
     private boolean gameOver;
@@ -165,7 +165,7 @@ public class Hunter {
         }
     }
 
-    public String getTreasure() {
+    public static String getTreasure() {
         String printableTreasure = "";
         for (int i = 0; i < 3; i++) {
             if (treasure[i] != null) {
