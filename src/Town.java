@@ -113,13 +113,15 @@ public class Town {
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance) {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold." + Colors.RESET;
-                printMessage += "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.RESET +" gold.";
+                printMessage += "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.RESET + " gold.";
                 hunter.changeGold(goldDiff);
             } else {
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!" + Colors.RESET;
                 printMessage += "\nYou lost the brawl and pay " + Colors.RED + goldDiff + Colors.RESET + " gold.";
                 hunter.changeGold(-goldDiff);
-                TreasureHunter.gameOVER(printMessage);
+                if (hunter.getGold() < 0) {
+                    TreasureHunter.gameOVER(printMessage);
+                }
             }
         }
     }
@@ -130,20 +132,25 @@ public class Town {
                 crown = true;
                 hunter.addTreasure("crown");
                 System.out.println("you found a crown!");
+            } else {
+                System.out.println("you already have a crown");
             }
-            System.out.println("you already have a crown");
         } else if (rand == 2) {
             if (trophy == false) {
                 trophy = true;
+                hunter.addTreasure("trophy");
                 System.out.println("you found a trophy!");
+            } else {
+                System.out.println("you already have a trophy");
             }
-            System.out.println("you already have a trophy");
         } else if (rand == 3 ) {
             if (gem == false) {
                 gem = true;
+                hunter.addTreasure("gem");
                 System.out.println("you found a gem!");
+            } else {
+                System.out.println("you already have a gem");
             }
-            System.out.println("you already have a gem");
         } else {
             System.out.println("you found dust!");
         }

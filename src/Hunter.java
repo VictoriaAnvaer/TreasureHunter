@@ -159,7 +159,7 @@ public class Hunter {
 
     public String getTreasure() {
         String printableTreasure = "";
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             if (treasure[i] != null) {
                 printableTreasure += treasure[i] + " ";
             }
@@ -167,6 +167,9 @@ public class Hunter {
         return printableTreasure;
     }
 
+    public int getGold() {
+        return gold;
+    }
     /**
      * @return A string representation of the hunter.
      */
@@ -175,6 +178,13 @@ public class Hunter {
         if (!kitIsEmpty()) {
             str += " and " + Colors.PURPLE + getInventory() + Colors.RESET;
         }
+        str += "\nTreasures found: ";
+        if (getTreasure().indexOf(" ") != -1) { // if there is treasure
+            str += Colors.BLUE + getTreasure() + Colors.RESET;
+        } else {
+            str += "none";
+        }
+
         return str;
     }
 
