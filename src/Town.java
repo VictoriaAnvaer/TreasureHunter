@@ -10,7 +10,14 @@ public class Town {
     private Shop shop;
     private Terrain terrain;
     private String printMessage;
+    private boolean hunt;
     private boolean toughTown;
+    private static boolean crown;
+    private static boolean trophy;
+    private static boolean gem;
+    private static boolean dust;
+
+
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -112,6 +119,36 @@ public class Town {
                 TreasureHunter.gameOVER(printMessage);
             }
         }
+    }
+    public void huntForTreasure() {
+        int rand = (int) (Math.random()*4) + 1;
+        if (rand == 1) {
+            if (crown == false) {
+                crown = true;
+                hunter.addTreasure("crown");
+                System.out.println("you found a crown!");
+            }
+            System.out.println("you already have a crown");
+        } else if (rand == 2) {
+            if (trophy == false) {
+                trophy = true;
+                System.out.println("you found a trophy!");
+            }
+            System.out.println("you already have a trophy");
+        } else if (rand == 3 ) {
+            if (gem == false) {
+                gem = true;
+                System.out.println("you found a gem!");
+            }
+            System.out.println("you already have a gem");
+        } else {
+            System.out.println("you found dust!");
+        }
+        hunt = true;
+    }
+
+    public boolean hunted() {
+        return hunt;
     }
 
     public String toString() {
