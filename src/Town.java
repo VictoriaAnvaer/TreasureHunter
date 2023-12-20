@@ -70,16 +70,16 @@ public class Town {
         boolean canLeaveTown = terrain.canCrossTerrain(hunter);
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
-            printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
+            printMessage = "You used your " + Colors.PURPLE + item + Colors.RESET + " to cross the " + terrain.getTerrainName() + ".";
             if (hunter.getMode().equals("easy") && (checkItemBreak())) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, you lost your " + item + ".";
+                printMessage += "\nUnfortunately, you lost your " + Colors.PURPLE + item + Colors.RESET + ".";
             }
             dug = false;
             return true;
         }
 
-        printMessage = "You can't leave town, " + hunter.getHunterName() + ". You don't have a " + terrain.getNeededItem() + ".";
+        printMessage = "You can't leave town, " + hunter.getHunterName() + ". You don't have a " + Colors.PURPLE + terrain.getNeededItem() + Colors.RESET + ".";
         return false;
     }
 
@@ -126,60 +126,62 @@ public class Town {
         }
     }
     public void huntForTreasure() {
-        int rand = (int) (Math.random()*4) + 1;
-        if (rand == 1) {
-            if (crown == false) {
-                crown = true;
-                hunter.addTreasure("crown");
-                System.out.println("you found a crown!");
+        if (!hunt) {
+            int rand = (int) (Math.random()*4) + 1;
+            if (rand == 1) {
+                if (crown == false) {
+                    crown = true;
+                    hunter.addTreasure("crown");
+                    printMessage = ("you found a " + Colors.BLUE + "crown" + Colors.RESET + "!");
+                } else {
+                    printMessage = ("you already have a crown");
+                }
+            } else if (rand == 2) {
+                if (trophy == false) {
+                    trophy = true;
+                    hunter.addTreasure("trophy");
+                    printMessage = ("you found a " + Colors.BLUE + "trophy" + Colors.RESET + "!");
+                } else {
+                    printMessage = ("you already have a trophy");
+                }
+            } else if (rand == 3 ) {
+                if (gem == false) {
+                    gem = true;
+                    hunter.addTreasure("gem");
+                    printMessage = ("you found a " + Colors.BLUE + "gem" + Colors.RESET + "!");
+                } else {
+                    printMessage = ("you already have a gem");
+                }
             } else {
-                System.out.println("you already have a crown");
+                printMessage = ("you found dust!");
             }
-        } else if (rand == 2) {
-            if (trophy == false) {
-                trophy = true;
-                hunter.addTreasure("trophy");
-                System.out.println("you found a trophy!");
-            } else {
-                System.out.println("you already have a trophy");
-            }
-        } else if (rand == 3 ) {
-            if (gem == false) {
-                gem = true;
-                hunter.addTreasure("gem");
-                System.out.println("you found a gem!");
-            } else {
-                System.out.println("you already have a gem");
+            hunt = true;
+            if (gem == true && crown == true && trophy == true ) {
+                TreasureHunter.win();
             }
         } else {
-            System.out.println("you found dust!");
+            printMessage = Colors.RED + "You already hunted in this town." + Colors.RESET;
         }
-        hunt = true;
-        if (gem == true && crown == true && trophy == true ) {
-            TreasureHunter.win();
-        }
+
     }
 
-    public boolean hunted() {
-        return hunt;
-    }
 
     public void digForGold() {
         if (hunter.hasItemInKit("shovel")) {
             if (dug) {
-                printMessage = "You already dug for gold in this town.";
+                printMessage = Colors.RED + "You already dug for gold in this town." + Colors.RESET;
             } else {
                 if ((int) (Math.random() * 2 + 1) == 1) {
                     int gold = (int) (Math.random() * 20 + 1);
                     hunter.changeGold(gold);
-                    printMessage = "You dug up " + gold + " gold!";
+                    printMessage = "You dug up " + Colors.YELLOW + gold + Colors.RESET + " gold!";
                 } else {
                     printMessage = "You dug but only found dirt.";
                 }
                 dug = true;
             }
         } else {
-            printMessage = "You can't dig for gold without a shovel.";
+            printMessage = Colors.RED + "You can't dig for gold without a shovel." + Colors.RESET;
         }
     }
 
