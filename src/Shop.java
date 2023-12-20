@@ -53,7 +53,7 @@ public class Shop {
             if (cost == -1) {
                 System.out.println("We ain't got none of those.");
             } else {
-                System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
+                System.out.print("It'll cost you " + Colors.YELLOW + cost + Colors.RESET + " gold. Buy it (y/n)? ");
                 String option = SCANNER.nextLine().toLowerCase();
 
                 if (option.equals("y")) {
@@ -68,7 +68,7 @@ public class Shop {
             if (cost == 0) {
                 System.out.println("We don't want none of those.");
             } else {
-                System.out.print("It'll get you " + cost + " gold. Sell it (y/n)? ");
+                System.out.print("It'll get you " + Colors.YELLOW + cost + Colors.RESET + " gold. Sell it (y/n)? ");
                 String option = SCANNER.nextLine().toLowerCase();
 
                 if (option.equals("y")) {
@@ -85,17 +85,16 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
-        str += "Boots: " + BOOTS_COST + " gold\n";
-        str += "Shovel: " + SHOVEL_COST + " gold\n";
+        String str = Colors.GREEN + "Water: " + Colors.YELLOW + WATER_COST + Colors.RESET + " gold\n";
+        str += Colors.GREEN + "Rope: " + Colors.YELLOW + ROPE_COST + Colors.RESET + " gold\n";
+        str += Colors.GREEN + "Machete: " + Colors.YELLOW + MACHETE_COST + Colors.RESET + " gold\n";
+        str += Colors.GREEN + "Horse: " + Colors.YELLOW + HORSE_COST + Colors.RESET + " gold\n";
+        str += Colors.GREEN + "Boat: " + Colors.YELLOW + BOAT_COST + Colors.RESET + " gold\n";
+        str += Colors.GREEN + "Boots: " + Colors.YELLOW + BOOTS_COST + Colors.RESET + " gold\n";
+        str += Colors.GREEN + "Shovel: " + Colors.YELLOW + SHOVEL_COST + Colors.RESET + " gold\n";
         if (TreasureHunter.getSamurai() == true ) {
-            str += "Sword: " + SWORD_COST + " gold\n";
+            str += Colors.GREEN + "Sword: " + Colors.YELLOW + SWORD_COST + Colors.RESET + " gold\n";
         }
-
         return str;
     }
 
