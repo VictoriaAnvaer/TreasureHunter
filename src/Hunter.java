@@ -21,7 +21,7 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
-        kit = new String[7]; // only 7 possible items can be stored in kit
+        kit = new String[8]; // only 7 possible items can be stored in kit
         treasure = new String[3];
         gold = startingGold;
         gameOver = false;
@@ -59,13 +59,17 @@ public class Hunter {
      * @return true if the item is successfully bought.
      */
     public boolean buyItem(String item, int costOfItem) {
-        if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
+        if (costOfItem >= 0 && TreasureHunter.getSamurai() == true && hasItemInKit("sword") && gold < costOfItem) { // scares shopkeeper
+            gold -= gold;
+            addItem(item);
+            return true;
+        } else if (costOfItem < 0 || gold < costOfItem || hasItemInKit(item)) {
             return false;
+        } else {
+            gold -= costOfItem;
+            addItem(item);
+            return true;
         }
-
-        gold -= costOfItem;
-        addItem(item);
-        return true;
     }
 
     /**

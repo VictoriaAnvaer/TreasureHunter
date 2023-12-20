@@ -17,6 +17,7 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
     private boolean easyMode;
+    private static boolean samurai;
     private static boolean gameOver;
 
     /**
@@ -29,6 +30,7 @@ public class TreasureHunter {
         hardMode = false;
         easyMode = false;
         gameOver = false;
+        samurai = false;
     }
 
     /**
@@ -42,6 +44,8 @@ public class TreasureHunter {
     public boolean getEasyMode() {
         return easyMode;
     }
+
+    public static boolean getSamurai() {return samurai;}
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -74,6 +78,9 @@ public class TreasureHunter {
             hunter.changeGold(10);
             easyMode = true;
             hunter.setMode("easy");
+        } else if (hard.equals("s")) {
+            samurai = true;
+            hunter.setMode("normal");
         } else {
             hunter.setMode("normal");
         }
