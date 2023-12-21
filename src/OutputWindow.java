@@ -20,9 +20,16 @@ public class OutputWindow {
         textPane.setEditable(false); // prevents user from typing into window
         doc = textPane.getStyledDocument(); // call getter method for panel's style doc
         style = doc.addStyle("my style", null); // add a custom style to the doc
-        StyleConstants.setFontSize(style, 20); // apply font size to custom style
+        StyleConstants.setFontSize(style, 25); // apply font size to custom style
+        StyleConstants.setFontFamily(style, "SansSerif"); // apply font type to custom style
         frame.add(textPane); // add the panel to the frame
         frame.setVisible(true); // display the frame on screen
+        // custom colors for later use
+        Color green = new Color(31, 176, 53);
+        Color gold = new Color(232, 196, 22);
+        Color red = new Color(225, 54, 54);
+        Color purple = new Color(166, 94, 204);
+        Color cyan = new Color(146, 222, 218);
     }
 
     public void addTextToWindow(String text, Color color) {
