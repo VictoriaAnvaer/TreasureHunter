@@ -20,7 +20,7 @@ public class TreasureHunter {
     private boolean easyMode;
     private static boolean samurai;
     private static boolean gameOver;
-    private OutputWindow window;
+    private static OutputWindow window;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -187,7 +187,7 @@ public class TreasureHunter {
 
 
     public static void win() {
-        System.out.println("Congrats! You have found the last of the three treasures," + Colors.WHITE + "you win!");
+        window.addTextToWindow("\nCongrats! You have found the last of the three treasures, you win!", Color.black);
         gameOver = true;
     }
 }

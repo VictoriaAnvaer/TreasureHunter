@@ -26,7 +26,6 @@ public class Shop {
     // instance variables
     private double markdown;
     private Hunter customer;
-
     /**
      * The Shop constructor takes in a markdown value and leaves customer null until one enters the shop.
      *
