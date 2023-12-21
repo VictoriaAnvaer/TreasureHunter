@@ -20,7 +20,7 @@ public class OutputWindow {
         textPane.setEditable(false); // prevents user from typing into window
         doc = textPane.getStyledDocument(); // call getter method for panel's style doc
         style = doc.addStyle("my style", null); // add a custom style to the doc
-        StyleConstants.setFontSize(style, 25); // apply font size to custom style
+        StyleConstants.setFontSize(style, 20); // apply font size to custom style
         frame.add(textPane); // add the panel to the frame
         frame.setVisible(true); // display the frame on screen
     }

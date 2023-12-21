@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 
 /**
@@ -19,11 +20,12 @@ public class TreasureHunter {
     private boolean easyMode;
     private static boolean samurai;
     private static boolean gameOver;
+    private OutputWindow window;
 
     /**
      * Constructs the Treasure Hunter game.
      */
-    public TreasureHunter() {
+    public TreasureHunter(OutputWindow window) {
         // these will be initialized in the play method
         currentTown = null;
         hunter = null;
@@ -31,6 +33,7 @@ public class TreasureHunter {
         easyMode = false;
         gameOver = false;
         samurai = false;
+        this.window = window;
     }
 
     /**
@@ -51,15 +54,15 @@ public class TreasureHunter {
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
      */
     private void welcomePlayer() {
-        System.out.println("Welcome to " + Colors.CYAN + "TREASURE HUNTER" + Colors.RESET + "!");
-        System.out.println("Going hunting for the big treasure, eh?");
-        System.out.print("What's your name, Hunter? ");
+        window.addTextToWindow("Welcome to TREASURE HUNTER!", Color.cyan);
+        window.addTextToWindow("\nGoing hunting for the big treasure, eh?", Color.black);
+        window.addTextToWindow("\nWhat's your name, Hunter? ", Color.black);
         String name = SCANNER.nextLine().toLowerCase();
 
         // set hunter instance variable
         hunter = new Hunter(name, 10);
 
-        System.out.print("Easy, normal or hard mode?" + Colors.WHITE + " (e/n/h) " + Colors.RESET);
+        window.addTextToWindow("\nEasy, normal or hard mode? (e/n/h) ",Color.gray);
         String hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("h")) {
             hardMode = true;
@@ -130,20 +133,20 @@ public class TreasureHunter {
         String choice = "";
 
         while (!choice.equals("x") && gameOver == false ) {
-            System.out.println();
-            System.out.println(currentTown.getLatestNews());
-            System.out.println("***");
-            System.out.println(hunter);
-            System.out.println(currentTown);
-            System.out.println("(" + Colors.BLUE + "B" + Colors.RESET + ")uy something at the shop.");
-            System.out.println("(" + Colors.BLUE + "S" + Colors.RESET + ")ell something at the shop.");
-            System.out.println("(" + Colors.BLUE + "M" + Colors.RESET + ")ove on to a different town.");
-            System.out.println("(" + Colors.BLUE + "L" + Colors.RESET + ")ook for trouble!");
-            System.out.println("(" + Colors.BLUE + "D" + Colors.RESET + ")ig for gold!");
-            System.out.println("(" + Colors.BLUE + "H" + Colors.RESET + ")unt for treasure!");
-            System.out.println("Give up the hunt and e(" + Colors.RED + "X" + Colors.RESET + ")it.");
-            System.out.println();
-            System.out.print("What's your next move? ");
+            window.addTextToWindow("\n", Color.black);
+            window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.black);
+            window.addTextToWindow("\n***", Color.black);
+            window.addTextToWindow("\n" + hunter, Color.pink);
+            window.addTextToWindow("\n" + currentTown, Color.magenta);
+            window.addTextToWindow("\n(B)uy something at the shop.", Color.blue);
+            window.addTextToWindow("\n(S)ell something at the shop.", Color.blue);
+            window.addTextToWindow("\n(M)ove on to a different town.", Color.blue);
+            window.addTextToWindow("\n(L)ook for trouble!", Color.blue);
+            window.addTextToWindow("\n(D)ig for gold!" , Color.blue);
+            window.addTextToWindow("\n(H)unt for treasure!", Color.blue);
+            window.addTextToWindow("\nGive up the hunt and e(X)it." Color.blue);
+            window.addTextToWindow("\n", Color.black);
+            window.addTextToWindow("\nWhat's your next move? ", Color.black);
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
