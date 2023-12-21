@@ -110,12 +110,12 @@ public class TreasureHunter {
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
-        Shop shop = new Shop(markdown);
+        Shop shop = new Shop(markdown, window);
 
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
-        currentTown = new Town(shop, toughness);
+        currentTown = new Town(shop, toughness,window);
 
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the
@@ -134,6 +134,7 @@ public class TreasureHunter {
 
         while (!choice.equals("x") && gameOver == false ) {
             window.addTextToWindow("\n", Color.black);
+            window.clear();
             window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.black);
             window.addTextToWindow("\n***", Color.black);
             window.addTextToWindow("\n" + hunter, Color.pink);
@@ -144,7 +145,7 @@ public class TreasureHunter {
             window.addTextToWindow("\n(L)ook for trouble!", Color.blue);
             window.addTextToWindow("\n(D)ig for gold!" , Color.blue);
             window.addTextToWindow("\n(H)unt for treasure!", Color.blue);
-            window.addTextToWindow("\nGive up the hunt and e(X)it." Color.blue);
+            window.addTextToWindow("\nGive up the hunt and e(X)it.", Color.blue);
             window.addTextToWindow("\n", Color.black);
             window.addTextToWindow("\nWhat's your next move? ", Color.black);
             choice = SCANNER.nextLine().toLowerCase();
@@ -162,25 +163,25 @@ public class TreasureHunter {
         } else if (choice.equals("m")) {
             if (currentTown.leaveTown()) {
                 // This town is going away so print its news ahead of time.
-                System.out.println(currentTown.getLatestNews());
+                window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.black);
                 enterTown();
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
         } else if (choice.equals("x")) {
-            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+            window.addTextToWindow("\nFare thee well, " + hunter.getHunterName() + "!", Color.black);
         } else if (choice.equals("h")) {
                 currentTown.huntForTreasure();
         } else if (choice.equals("d")) {
             currentTown.digForGold();
         } else {
-            System.out.println(Colors.RED + "Yikes!" + Colors.RESET + " That's an invalid option! Try again.");
+            window.addTextToWindow("\nYikes. That's an invalid option! Try again.", Color.red);
         }
     }
 
-    public static void gameOVER(String message) {
-        System.out.println(message);
-        System.out.println(Colors.RED + "Game over!" + Colors.RESET + " You lost all your gold");
+    public static void gameOVER(String message, OutputWindow window) {
+        window.addTextToWindow("\n" + message, Color.red);
+        window.addTextToWindow("\nGame over! You lost all your gold", Color.red);
         gameOver = true;
     }
 

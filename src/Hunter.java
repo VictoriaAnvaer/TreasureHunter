@@ -186,13 +186,13 @@ public class Hunter {
      * @return A string representation of the hunter.
      */
     public String toString() {
-        String str = hunterName + " has " + Colors.YELLOW + gold + Colors.RESET + " gold";
+        String str = hunterName + " has " + gold + " gold";
         if (!kitIsEmpty()) {
-            str += " and " + Colors.PURPLE + getInventory() + Colors.RESET;
+            str += " and " + getInventory() ;
         }
         str += "\nTreasures found: ";
         if (getTreasure().indexOf(" ") != -1) { // if there is treasure
-            str += Colors.BLUE + getTreasure() + Colors.RESET;
+            str += getTreasure() ;
         } else {
             str += "none";
         }
