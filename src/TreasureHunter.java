@@ -55,8 +55,8 @@ public class TreasureHunter {
      */
     private void welcomePlayer() {
         window.addTextToWindow("Welcome to TREASURE HUNTER!", Color.cyan);
-        window.addTextToWindow("\nGoing hunting for the big treasure, eh?", Color.black);
-        window.addTextToWindow("\nWhat's your name, Hunter? ", Color.black);
+        window.addTextToWindow("\nGoing hunting for the big treasure, eh?", Color.white);
+        window.addTextToWindow("\nWhat's your name, Hunter? ", Color.white);
         String name = SCANNER.nextLine().toLowerCase();
 
         // set hunter instance variable
@@ -133,10 +133,10 @@ public class TreasureHunter {
         String choice = "";
 
         while (!choice.equals("x") && gameOver == false ) {
-            window.addTextToWindow("\n", Color.black);
+            window.addTextToWindow("\n", Color.white);
             window.clear();
-            window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.black);
-            window.addTextToWindow("\n***", Color.black);
+            window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.white);
+            window.addTextToWindow("\n***", Color.white);
             window.addTextToWindow("\n" + hunter, Color.pink);
             window.addTextToWindow("\n" + currentTown, Color.magenta);
             window.addTextToWindow("\n(B)uy something at the shop.", Color.blue);
@@ -146,8 +146,8 @@ public class TreasureHunter {
             window.addTextToWindow("\n(D)ig for gold!" , Color.blue);
             window.addTextToWindow("\n(H)unt for treasure!", Color.blue);
             window.addTextToWindow("\nGive up the hunt and e(X)it.", Color.blue);
-            window.addTextToWindow("\n", Color.black);
-            window.addTextToWindow("\nWhat's your next move? ", Color.black);
+            window.addTextToWindow("\n", Color.white);
+            window.addTextToWindow("\nWhat's your next move? ", Color.white);
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
@@ -163,13 +163,13 @@ public class TreasureHunter {
         } else if (choice.equals("m")) {
             if (currentTown.leaveTown()) {
                 // This town is going away so print its news ahead of time.
-                window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.black);
+                window.addTextToWindow("\n" + currentTown.getLatestNews(), Color.white);
                 enterTown();
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
         } else if (choice.equals("x")) {
-            window.addTextToWindow("\nFare thee well, " + hunter.getHunterName() + "!", Color.black);
+            window.addTextToWindow("\nFare thee well, " + hunter.getHunterName() + "!", Color.white);
         } else if (choice.equals("h")) {
                 currentTown.huntForTreasure();
         } else if (choice.equals("d")) {
@@ -187,7 +187,7 @@ public class TreasureHunter {
 
 
     public static void win() {
-        window.addTextToWindow("\nCongrats! You have found the last of the three treasures, you win!", Color.black);
+        window.addTextToWindow("\nCongrats! You have found the last of the three treasures, you win!", Color.white);
         gameOver = true;
     }
 }

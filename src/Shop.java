@@ -48,10 +48,10 @@ public class Shop {
 
         if (buyOrSell.equals("b")) {
             window.clear();
-            window.addTextToWindow("\nWelcome to the shop! We have the finest wares in town.", Color.black);
-            window.addTextToWindow("\nCurrently we have the following items:", Color.black);
+            window.addTextToWindow("\nWelcome to the shop! We have the finest wares in town.", Color.white);
+            window.addTextToWindow("\nCurrently we have the following items:", Color.white);
             window.addTextToWindow("\n" + inventory(), Color.magenta);
-            window.addTextToWindow("\nWhat're you lookin' to buy? ", Color.black);
+            window.addTextToWindow("\nWhat're you lookin' to buy? ", Color.white);
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
             if (cost == -1) {
@@ -65,12 +65,12 @@ public class Shop {
                 }
             }
         } else {
-            window.addTextToWindow("\nWhat're you lookin' to sell? ", Color.black);
+            window.addTextToWindow("\nWhat're you lookin' to sell? ", Color.white);
             window.addTextToWindow("\nYou currently have the following items: " +  customer.getInventory() , Color.magenta);
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, false);
             if (cost == 0) {
-                window.addTextToWindow("\nWe don't want none of those.", Color.black);
+                window.addTextToWindow("\nWe don't want none of those.", Color.white);
             } else {
                 window.addTextToWindow("\nIt'll get you " + cost +  " gold. Sell it (y/n)? ", Color.yellow);
                 String option = SCANNER.nextLine().toLowerCase();
@@ -112,7 +112,7 @@ public class Shop {
         if (TreasureHunter.getSamurai() == true && !customer.hasItemInKit("sword") && item == "sword") {
             customer.addItem("sword");
         } else if (customer.buyItem(item, costOfItem)) {
-            window.addTextToWindow("\n You got yerself a " + item +  ". Come again soon." , Color.black);
+            window.addTextToWindow("\n You got yerself a " + item +  ". Come again soon." , Color.white);
         } else {
             window.addTextToWindow("\nHmm, either you don't have enough gold or you've already got one of those!", Color.orange);
         }
@@ -126,7 +126,7 @@ public class Shop {
     public void sellItem(String item) {
         int buyBackPrice = checkMarketPrice(item, false);
         if (customer.sellItem(item, buyBackPrice)) {
-            window.addTextToWindow("\nPleasure doin' business with you.", Color.black);
+            window.addTextToWindow("\nPleasure doin' business with you.", Color.white);
         } else {
             window.addTextToWindow("\nStop stringin' me along!",Color.darkGray);
         }
